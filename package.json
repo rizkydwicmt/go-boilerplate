@@ -1,0 +1,28 @@
+{
+    "scripts": {
+        "init": "npm run init:go ${npm_config_name} && npm run init:lib && npm run init:dep",
+        "init:go": "go mod init",
+        "init:lib": "go get -u github.com/gin-gonic/gin gorm.io/gorm gorm.io/driver/postgres github.com/gomodule/redigo/redis",
+        "init:dep": "go get -u github.com/spf13/viper github.com/sirupsen/logrus github.com/lestrrat-go/file-rotatelogs github.com/rifflock/lfshook github.com/gin-contrib/cors github.com/appleboy/gin-jwt/v2 github.com/rabbitmq/amqp091-go",
+        "init:etc": "go get -u github.com/google/uuid",
+        "dev": "nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run main.go",
+        "log": "tail -f logs/firstapp.log",
+        "docker": "sudo docker-compose up -d",
+        "docker:down": "sudo docker-compose down",
+        "docker:inspect": "sudo docker inspect ${npm_config_image} | grep tcp",
+        "rabbitmq:hello:recieve": "nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run rabbitmq/hello-word/recieve.go",
+        "rabbitmq:hello:send": "go run rabbitmq/hello-word/send.go",
+        "rabbitmq:work:worker": "nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run rabbitmq/work-queue/worker.go",
+        "rabbitmq:work:task": "go run rabbitmq/work-queue/new_task.go",
+        "rabbitmq:pubsub:recieve": "nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run rabbitmq/pubsub/recieve_log.go",
+        "rabbitmq:pubsub:emit": "go run rabbitmq/pubsub/emit_log.go",
+        "rabbitmq:routing:recieve": "nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run rabbitmq/routing/recieve_log_direct.go",
+        "rabbitmq:routing:emit": "go run rabbitmq/routing/emit_log_direct.go",
+        "rabbitmq:topic:recieve": "nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run rabbitmq/topic/recieve_log_topic.go",
+        "rabbitmq:topic:emit": "go run rabbitmq/topic/emit_log_topic.go",
+        "rabbitmq:header:recieve": "nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run rabbitmq/header/recieve_log_header.go",
+        "rabbitmq:header:emit": "go run rabbitmq/header/emit_log_header.go",
+        "rabbitmq:rpc:server": "nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run rabbitmq/rpc/rpc_server.go",
+        "rabbitmq:rpc:client": "go run rabbitmq/rpc/rpc_client.go"
+    }
+}

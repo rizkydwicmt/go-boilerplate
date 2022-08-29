@@ -1,0 +1,40 @@
+{
+    "LEVEL": "DEBUG",
+    "HOST": "127.0.0.1",
+    "ENVIRONMENT": "DEVELOPMENT",
+    "APPPORT": ":5000",
+    "pg": {
+      "host": "127.0.0.1",
+      "port": 5555,
+      "database": "go-boilerplate",
+      "user": "postgres",
+      "password": "changeme",
+      "max_idle": 5,
+      "max_active": 30
+    },
+    "redis": {
+      "host": "127.0.0.1",
+      "password": "",
+      "port": 6379,
+      "max_idle": 5,
+      "max_active": 30,
+      "idle_timeout": 200
+
+    },
+    "redis_docker": {
+      "host": "127.0.0.1",
+      "username": "rizky",
+      "password": "rahasia",
+      "port": 6666,
+      "max_idle": 5,
+      "max_active": 30,
+      "idle_timeout": 200
+
+    },
+    "logger": {
+        "path": "logs",
+        "name": "firstapp.log",
+        "max_age": 7,
+        "rotation_time": 1
+    }
+  }
