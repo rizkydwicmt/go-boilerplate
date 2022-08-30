@@ -33,10 +33,19 @@ func (h *authHandler) Router(router *gin.RouterGroup) {
 			})
 			return
 		}
-		user, _ := h.authService.Register(registerRequest.ToModel())
+		user, err := h.authService.Register(registerRequest.ToModel())
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{
+				"rc":   500,
+				"rd":   "failed register",
+				"data": err.Error(),
+			})
+			return
+		}
+
 		c.JSON(http.StatusOK, gin.H{
 			"rc":   200,
-			"rd":   "sukses root",
+			"rd":   "sukses register",
 			"data": user,
 		})
 	})

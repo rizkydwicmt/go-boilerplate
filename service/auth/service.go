@@ -19,7 +19,7 @@ func NewService(repository repository.Auth) *service {
 }
 
 func (s *service) Register(u model.User) (model.User, error) {
-	newUser, err := s.repository.Create(u)
+	newUser, err := s.repository.Register(u)
 	return newUser, err
 }
 
