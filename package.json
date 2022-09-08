@@ -9,6 +9,7 @@
         "log": "tail -f logs/firstapp.log",
         "docker": "sudo docker-compose up -d",
         "docker:down": "sudo docker-compose down",
+        "docker:down:all": "sudo docker-compose down $(docker ps -q)",
         "docker:inspect": "sudo docker inspect ${npm_config_image} | grep tcp",
         "rabbitmq:hello:recieve": "nodemon --watch './**/*.go' --signal SIGTERM --exec 'go' run rabbitmq/hello-word/recieve.go",
         "rabbitmq:hello:send": "go run rabbitmq/hello-word/send.go",
